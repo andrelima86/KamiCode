@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/themes/phar.min.css" />
+<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ 
+    
+
+    
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+       
+        <script type="text/javascript">
+
+            var map,
+                currentPosition,
+                directionsDisplay, 
+                directionsService;
+
+            function initialize(lat, lon)
+            {
+                directionsDisplay = new google.maps.DirectionsRenderer(); 
+                directionsService = new google.maps.DirectionsService();
+
+                currentPosition = new google.maps.LatLng(lat, lon);
+
+                map = new google.maps.Map(document.getElementById('map_canvas'), {
+                   zoom: 15,
+                   center: currentPosition,
+                   mapTypeId: google.maps.MapTypeId.ROADMAP
+                 });
+
+                directionsDisplay.setMap(map);
+
+                 var currentPositionMarker = new google.maps.Marker({
+                    position: currentPosition,
+                    map: map,
+                    title: "Current position"
+                });
+
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(currentPositionMarker, 'click', function() {
+                    infowindow.setContent("Current position: latitude: " + lat +" longitude: " + lon);
+                    infowindow.open(map, currentPositionMarker);
+                });
+            }
+
+            function locError(error) {
+                // initialize map with a static predefined latitude, longitude
+               initialize(59.3426606750, 18.0736160278);
+            }
+
+            function locSuccess(position) {
+                initialize(position.coords.latitude, position.coords.longitude);
+            }
+
+            function calculateRoute() {
+                var targetDestination = $("#myList").val();
+                if (currentPosition && currentPosition != '' && targetDestination && targetDestination != '') {
+                    var request = {
+                        origin:currentPosition, 
+                        destination:targetDestination,
+                        travelMode: google.maps.DirectionsTravelMode["DRIVING"]
+                    };
+
+                    directionsService.route(request, function(response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setPanel(document.getElementById("directions"));
+                            directionsDisplay.setDirections(response); 
+
+                            /*
+                                var myRoute = response.routes[0].legs[0];
+                                for (var i = 0; i < myRoute.steps.length; i++) {
+                                    alert(myRoute.steps[i].instructions);
+                                }
+                            */
+                            $("#results").show();
+                        }
+                        else {
+                            $("#results").hide();
+                        }
+                    });
+                }
+                else {
+                    $("#results").hide();
+                }
+            }
+             $(document).live("pagebeforeshow", "#map_page", function() {
+                navigator.geolocation.getCurrentPosition(locSuccess, locError);
+            });
+
+            $(document).on('click', '#directions-button', function(e){
+                e.preventDefault();
+                calculateRoute();
+            });
+
+            
+    </script>
+
+      
+
+    
+</head>
+
+<body>
+
+<div data-role="page" id="pageone">
+<div data-role="header">
+ <img src="test.jpg" alt="image"> <h1>BeHealthy®</h1>
+<a href="#pageeight"data-role="button" data-icon="info" class="ui-btn-right">Info</a>
+ </div>
+<div data-role="main" class="ui-content">
+      <div data-role="controlgroup" data-type="vertical">
+
+      
+      <a href="#pagetwo" class="ui-btn" data-transition="flip">PharmacyBook</a>
+      <a href="#basic-map" class="ui-btn">Nearby</a>
+      <a href="#pagefour" class="ui-btn" data-transition="flip">BMI Index</a>
+      <a href="#pagefive" class="ui-btn" data-transition="flip">Health Alerts</a>
+      <a href="#pagesix" class="ui-btn" data-transition="flip">Health Tips</a>
+      <a href="#pageseven" class="ui-btn" data-transition="flip">Contact Us</a>
+
+          
+    </div>
+  </div>
+
+<div data-role="footer" style="text-align:center;" data-position="fixed">
+<p> Follow Us: </p>
+
+<button onclick="myFunction()"><img src="f.jpg" alt="image"/> Facebook</button>
+<button onclick="myFunction1()"><img src="t.png" alt="image"/> Twitter</button>
+<button onclick="myFunction2()"><img src="i.jpg" alt="image"/> Instagram</button>
+<script>
+function myFunction() {
+    window.open("http://m.facebook.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+function myFunction1() {
+    window.open("http://m.twitter.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+function myFunction2() {
+    window.open("http://www.instagram.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+
+
+</script>
+   
+  </div>
+
+
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>PharmacyBook</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Address of Pharmacies</p>
+
+ <form class="ui-filterable">
+      <input id="myFilter" data-type="search">
+    </form>
+    <ul data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
+     <li>
+      <div data-role="collapsible">
+      <h1>Al Jazeera Pharmacy </h1>
+       <p>Tel: 06-5431500</p>
+       <p>Location: Sharjah </p>
+       </div>
+       </li>
+<li>
+<div data-role="collapsible">
+<h1> Al Madina Pharmacy </h1>
+<p>Tel: 06-7468424 </p>
+<p>Location: Ajman</p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Al Mankool Pharmacy </h1>
+<p>Tel: 04-3377329 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Balsam Pharmacy </h1>
+<p>Tel: 04-3984899 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> City Pharmacy </h1>
+<p>Tel: 04-2240566 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Cezar Pharmacy </h1>
+<p>Tel: 04-3892901 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Dubai Life Pharmacy </h1>
+<p>Tel: 04-3291162 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> GMC Pharmacy </h1>
+<p>Tel: 04-2626000 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Home Pharmacy </h1>
+<p>Tel: 04-3977739 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> LuLu Pharmacy </h1>
+<p>Tel: 04-3890121 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Life Line Pharmacy </h1>
+<p>Tel: 04-3448162 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Nassif Pharmacy </h1>
+<p>Tel:050-6741817 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Najaf Pharmacy </h1>
+<p>Tel:06-6809232 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Saba Pharmacy </h1>
+<p>Tel: 04-2885995 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+
+<li>
+<div data-role="collapsible">
+<h1> Zuleka Pharmacy </h1>
+<p>Tel: 04-2081201 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+
+
+    </ul>
+  </div>
+<div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+    
+</div> 
+
+
+
+
+
+        <div id="basic-map" data-role="page">
+          
+            <div data-role="header">
+               <a href="" class="ui-btn ui-icon-back ui-btn-icon-left" onclick="goBack()">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+            </div>
+            <div data-role="content">   
+                <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+                    <div id="map_canvas" style="height:350px;"></div>
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Nearby Pharmacies</label>
+             <select id = "myList">
+               <option value = "City Pharmacy">City Pharmacy</option>
+               <option value = "Dubai Mall">Dubai Mall</option>
+               <option value = "3">three</option>
+               <option value = "4">four</option>
+             </select>
+                    
+                </div>
+                <a href="#" id="directions-button" data-role="button" data-inline="true" data-mini="true">Get Directions</a>
+                                
+                <div id="results" style="display:none;">
+                    <div id="directions"></div>
+                </div>
+            </div>
+        </div> 
+
+<div data-role="page" id="pagefour">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>BMI Index</h1>
+<script>
+<!--
+function calculateBmi() {
+var weight = document.bmiForm.weight.value
+var height = document.bmiForm.height.value
+if(weight > 0 && height > 0){	
+var finalBmi = weight/(height/100*height/100)
+document.bmiForm.bmi.value = finalBmi
+if(finalBmi < 18.5){
+document.bmiForm.meaning.value = "You are thin."
+}
+if(finalBmi > 18.5 && finalBmi < 25){
+document.bmiForm.meaning.value = "You are healthy."
+}
+if(finalBmi > 25){
+document.bmiForm.meaning.value = "You are overweight."
+}
+}
+else{
+alert("Please Fill in everything correctly")
+}
+}
+//-->
+</script>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+<form name="bmiForm">
+Your Weight(kg): <input type="text" name="weight" size="10"><br />
+Your Height(cm): <input type="text" name="height" size="10"><br />
+<input type="button" value="Calculate BMI" onClick="calculateBmi()"><br />
+Your BMI: <input type="text" name="bmi" size="10"><br />
+This Means: <input type="text" name="meaning" size="25"><br />
+<input type="reset" value="Reset" />
+</form>
+    
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pagefive">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Health Alerts</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <img src="alert.gif" alt="image" width="100%" />
+
+<div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+
+</div>
+    </div>
+<div data-role="page" id="pagesix">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Health Tips</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  <img src="tips.jpg" alt="image" width="100%"/>
+    <p>Here are some Useful Tips for you to stay healthy:</p>
+<h1> 1.Exercise </h1>
+<p>You don't have to belong to a gym club. Thirty minutes walk every day will to prevent weight gain and encourage moderate weight loss.</p>
+ <h1> 2.Eat Healthy </h1>  
+<p> Reduce fat intake, cut down on sugar and opt for fruits and vegetables. This helps reduce cholesterol and blood pressure. Healthy food will also lead to better blood sugar control.</p>
+<h1> 3.Reduce stress </h1>  
+<p>Not everything we want we get. We have to accept that there are things that we cannot control. Managing time is also of great importance too. We must allow ourselves enough time to get things done. Set a time during the day for relaxation.</p>
+<h1> 4.Improve sleep </h1> 
+<p>Avoid caffeine, alcohol, nicotine, and other chemicals that interfere with sleep. Equip your bedroom with a comfortable mattress and pillows. Sleep in a dark clean and quiet environment.</p>
+<h1> 5.Meditation </h1> 
+<p>Meditation has been linked to a variety of health benefits. It has been linked to changes in metabolism, blood pressure, brain activation, and other bodily processes.</p>
+<h1> 6.Positive thinking</h1>
+<p>People who think positively have an optimistic view of life that affects their health and well-being. Optimism has been shown to explain between 5–10% of the variation in the likelihood of developing some health conditions, notably including cardiovascular disease,stroke, depression, and cancer.</p>
+
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pageseven">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Contact Us</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+<form method="GET" action="mailto:kamran.khd@outlook.com" enctype="text/plain">
+    <div>Subject</div>
+    <input type="text" name="subject" />
+
+    <div>Name</div>
+    <input name="Name" />
+
+    <div>E-Mail</div>
+    <input name="E-Mail Address" />
+
+    <div>Message</div>
+    <textarea name="Message"></textarea>
+
+    <br/>
+    <input type="submit" value="Send" />
+
+    <input type="hidden" name="body" />
+</form>
+
+<script>
+   var form = document.getElementsByTagName('form')[0];
+   form.addEventListener('submit',contact,false);
+   function contact(e) {
+      // Prevent Default Form Submission
+      e.preventDefault();
+
+      var target = e.target || e.srcElement;
+      var i = 0;
+      var message = '';
+
+      // Loop Through All Input Fields
+      for(i = 0; i < target.length; ++i) {
+         // Check to make sure it's a value. Don't need to include Buttons
+         if(target[i].type != 'text' && target[i].type != 'textarea') {
+                // Skip to next input since this one doesn't match our rules
+            continue;
+         }
+
+         // Add Input Name and value followed by a line break
+         message += target[i].name + ': ' + target[i].value + "\r\n";
+      }
+      // Modify the hidden body input field that is required for the mailto: scheme
+      target.elements["body"].value = message;
+
+      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
+      this.submit();
+   }
+</script>
+</div>
+
+<div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+
+</div> 
+
+<div data-role="page" id="pageeight">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+<h1 ui-icon-info ui-btn-icon-right>Information</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+<img src="test.jpg" alt="image"> <h1>BeHealthy®</h1>
+
+<p>The BeHealthy® Application is designed to help the user in finding pharmacies, beaware of health diseases and to maintain a healthy lifestyle. The Author is not responsible for any mishap caused by the use of this application. The information provided in this app is accurate and up to date.</p>
+<h2>Developed by:</h2>
+<p> Kamran Khalid </p>
+<p> Dubai, United Arab Emirates</p>
+<p> Tel: +971557692691 </p>
+<p> Email: Kamran.khd@outlook.com </p>
+
+</div>
+
+<div data-role="footer" data-position="fixed">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div>
+
+</body>
+</html>

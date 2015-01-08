@@ -1,0 +1,14 @@
+{
+  "cols": [
+        {"id":"","label":"Values","pattern":"","type":"string", "name":""},
+        {"id":"","label":"Percentages","pattern":"","type":"number"}
+      ],
+  "rows": [
+        {"c":[{"v":"Fat Percentage","f":null,},{"v":4.3 ,"f":null}]},
+        {"c":[{"v":"water Percentage","f":null,},{"v":4.8,"f":null}]},
+        {"c":[{"v":"Muscle Percentage","f":null,},{"v":3,"f":null}]},
+        {"c":[{"v":"Protein Percentage","f":null,},{"v":8,"f":null}]},
+       
+      ]
+}
+

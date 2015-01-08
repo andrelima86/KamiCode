@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+  body {background-color:lightgrey}
+  h1   {color:blue}
+  p    {color:green}
+</style>
+</head>
+
+<body>
+
+<div data-role="page" id="pageone">
+<div data-role="header">
+ <img src="test.jpg" alt="image" <h1>BeHealthy®</h1>
+<a href="#pageeight"data-role="button" data-icon="info" class="ui-btn-right">Info</a>
+ </div>
+<div data-role="main" class="ui-content">
+      <div data-role="controlgroup" data-type="vertical">
+
+      
+      <a href="#pagetwo" class="ui-btn" data-transition="flip">PharmacyBook</a>
+      <a href="#pagethree" class="ui-btn" data-transition="flip">Nearby</a>
+      <a href="#pagefour" class="ui-btn" data-transition="flip">BMI Index</a>
+      <a href="#pagefive" class="ui-btn" data-transition="flip">Health Alerts</a>
+      <a href="#pagesix" class="ui-btn" data-transition="flip">Health Tips</a>
+      <a href="#pageseven" class="ui-btn" data-transition="flip">Contact Us</a>
+    </div>
+  </div>
+
+<div data-role="footer" style="text-align:center;">
+<p> Follow Us: </p>
+
+<button onclick="myFunction()"><img src="f.jpg" alt="image"/> Facebook</button>
+<button onclick="myFunction1()"><img src="t.png" alt="image"/> Twitter</button>
+<button onclick="myFunction2()"><img src="i.jpg" alt="image"/> Instagram</button>
+<script>
+function myFunction() {
+    window.open("http://m.facebook.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+function myFunction1() {
+    window.open("http://m.twitter.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+function myFunction2() {
+    window.open("http://www.instagram.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");
+}
+
+
+</script>
+   
+  </div>
+
+
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>PharmacyBook</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Address of Pharmacies</p>
+
+ <form class="ui-filterable">
+      <input id="myFilter" data-type="search">
+    </form>
+    <ul data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
+     <li>
+      <div data-role="collapsible">
+      <h1>Al Jazeera Pharmacy </h1>
+       <p>Tel: 06-5431500</p>
+       <p>Location: Sharjah </p>
+       </div>
+       </li>
+<li>
+<div data-role="collapsible">
+<h1> Al Madina Pharmacy </h1>
+<p>Tel: 06-7468424 </p>
+<p>Location: Ajman</p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Al Mankool Pharmacy </h1>
+<p>Tel: 04-3377329 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Balsam Pharmacy </h1>
+<p>Tel: 04-3984899 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> City Pharmacy </h1>
+<p>Tel: 04-2240566 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Cezar Pharmacy </h1>
+<p>Tel: 04-3892901 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Dubai Life Pharmacy </h1>
+<p>Tel: 04-3291162 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> GMC Pharmacy </h1>
+<p>Tel: 04-2626000 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> Home Pharmacy </h1>
+<p>Tel: 04-3977739 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+<li>
+<div data-role="collapsible">
+<h1> LuLu Pharmacy </h1>
+<p>Tel: 04-3890121 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Life Line Pharmacy </h1>
+<p>Tel: 04-3448162 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Nassif Pharmacy </h1>
+<p>Tel:050-6741817 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Najaf Pharmacy </h1>
+<p>Tel:06-6809232 </p>
+<p>Location: Sharjah </p>
+</div>
+</li>
+
+
+<li>
+<div data-role="collapsible">
+<h1> Saba Pharmacy </h1>
+<p>Tel: 04-2885995 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+
+<li>
+<div data-role="collapsible">
+<h1> Zuleka Pharmacy </h1>
+<p>Tel: 04-2081201 </p>
+<p>Location: Dubai </p>
+</div>
+</li>
+
+
+
+
+    </ul>
+  </div>
+<div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+    
+</div> 
+
+
+
+
+<div data-role="page" id="pagethree">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Nearby</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Nearby</p>
+         
+    </div>
+
+<div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+
+
+</div>
+
+
+<div data-role="page" id="pagefour">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>BMI Index</h1>
+<script language="JavaScript">
+<!--
+function calculateBmi() {
+var weight = document.bmiForm.weight.value
+var height = document.bmiForm.height.value
+if(weight > 0 && height > 0){	
+var finalBmi = weight/(height/100*height/100)
+document.bmiForm.bmi.value = finalBmi
+if(finalBmi < 18.5){
+document.bmiForm.meaning.value = "You are thin."
+}
+if(finalBmi > 18.5 && finalBmi < 25){
+document.bmiForm.meaning.value = "You are healthy."
+}
+if(finalBmi > 25){
+document.bmiForm.meaning.value = "You are overweight."
+}
+}
+else{
+alert("Please Fill in everything correctly")
+}
+}
+//-->
+</script>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+<form name="bmiForm">
+Your Weight(kg): <input type="text" name="weight" size="10"><br />
+Your Height(cm): <input type="text" name="height" size="10"><br />
+<input type="button" value="Calculate BMI" onClick="calculateBmi()"><br />
+Your BMI: <input type="text" name="bmi" size="10"><br />
+This Means: <input type="text" name="meaning" size="25"><br />
+<input type="reset" value="Reset" />
+</form>
+    
+  </div>
+
+  <div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pagefive">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Health Alerts</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <img src="alert.gif" alt="image" width="100%" />
+<div id="widgetmain" style="text-align:left;overflow-y:auto;overflow-x:hidden;width:300px;background-color:#transparent; border:1px solid #333333;"><div id="rsswidget" style="height:400px;"><iframe src="http://us1.rssfeedwidget.com/getrss.php?time=1419784195909&amp;x=http%3A%2F%2Fnews.google.com%2Fnews%3Fned%3Dus%26topic%3Dm%26output%3Drss&amp;w=300&amp;h=400&amp;bc=333333&amp;bw=1&amp;bgc=transparent&amp;m=20&amp;it=true&amp;t=(default)&amp;tc=333333&amp;ts=15&amp;tb=transparent&amp;il=true&amp;lc=0000FF&amp;ls=14&amp;lb=false&amp;id=true&amp;dc=333333&amp;ds=14&amp;idt=true&amp;dtc=284F2D&amp;dts=12" border="0" hspace="0" vspace="0" frameborder="no" marginwidth="0" marginheight="0" style="border:0; padding:0; margin:0; width:300px; height:400px;" id="rssOutput">Reading RSS Feed ...</iframe></div><div style="text-align:right;margin-bottom:0;border-top:1px solid #333333;" id="widgetbottom"><span style="font-size:70%"><a href="http://www.rssfeedwidget.com">rss feed widget</a>&nbsp;</span><br></div>
+    </div>
+</div>
+<div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+
+</div>
+
+<div data-role="page" id="pagesix">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Health Tips</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  <img src="tips.jpg" alt="image" width="100%"/>
+    <p>Here are some Useful Tips for you to stay healthy:</p>
+<h1> 1.Exercise </h1>
+<p>You don't have to belong to a gym club. Thirty minutes walk every day will to prevent weight gain and encourage moderate weight loss.</p>
+ <h1> 2.Eat Healthy </h1>  
+<p> Reduce fat intake, cut down on sugar and opt for fruits and vegetables. This helps reduce cholesterol and blood pressure. Healthy food will also lead to better blood sugar control.</p>
+<h1> 3.Reduce stress </h1>  
+<p>Not everything we want we get. We have to accept that there are things that we cannot control. Managing time is also of great importance too. We must allow ourselves enough time to get things done. Set a time during the day for relaxation.</p>
+<h1> 4.Improve sleep </h1> 
+<p>Avoid caffeine, alcohol, nicotine, and other chemicals that interfere with sleep. Equip your bedroom with a comfortable mattress and pillows. Sleep in a dark clean and quiet environment.</p>
+<h1> 5.Meditation </h1> 
+<p>Meditation has been linked to a variety of health benefits. It has been linked to changes in metabolism, blood pressure, brain activation, and other bodily processes.</p>
+<h1> 6.Positive thinking</h1>
+<p>People who think positively have an optimistic view of life that affects their health and well-being. Optimism has been shown to explain between 5–10% of the variation in the likelihood of developing some health conditions, notably including cardiovascular disease,stroke, depression, and cancer.</p>
+
+
+  </div>
+
+  <div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pageseven">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+<a href="#pageeight" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>
+    <h1>Contact Us</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form method="post" action="demoform.asp">
+      <div class="ui-field-contain">
+
+    Full Name *
+    <input class="input-style" name="name"  id="name" type="text" required> 
+    Email *
+    <input class="input-style" name="email"  id="email" type="email" required>
+    Phone * 
+    <input name="mobile"  id="mobile" type="number" required>
+      <label for="info">Comments:</label>
+      <textarea name="addinfo" id="info"></textarea>
+</div>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset" />
+</form>
+</div>
+
+<div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+
+</div> 
+
+<div data-role="page" id="pageeight">
+  <div data-role="header" id="header" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+<h1 ui-icon-info ui-btn-icon-right>Information</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+<img src="test.jpg" alt="image" <h1>BeHealthy®</h1>
+
+<p>The BeHealthy® Application is designed to help the user in finding pharmacies, beaware of health diseases and to maintain a healthy lifestyle. The Author is not responsible for any mishap caused by the use of this application. The information provided in this app is accurate and up to date.</p>
+<h2>Developed by:</h2>
+<p> Kamran Khalid </p>
+<p> Dubai, United Arab Emirates</p>
+<p> Tel: +971557692691 </p>
+<p> Email: Kamran.khd@outlook.com </p>
+
+</div>
+
+<div data-role="footer">
+    <h1>Kamran © 2015</h1>
+  </div>
+</div>
+
+</body>
+</html>
